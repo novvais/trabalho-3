@@ -74,9 +74,10 @@ int main() {
 
             case 5:
                 printf("Digite o nome do produto: ");
-                scanf(" %[^\n]%*c", name);  // Captura nome com espaços
+                fgets(name, sizeof(name), stdin);
 
-                // Buscar o produto usando busca linear
+                name[strcspn(name, "\n")] = '\0'; 
+
                 int result = searchProduct(&inventory, name);
 
                 if (result != -1) {
